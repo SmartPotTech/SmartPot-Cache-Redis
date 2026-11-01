@@ -52,9 +52,30 @@ SmartPot-Cache/
 
 ## Guía de Instalación
 
+### Despliegue en un comando
+
+La imagen es pública: `ghcr.io/smartpottech/smartpot-cache`. La plataforma completa, con este servicio incluido, se
+levanta con un solo comando y sin descargar el código:
+
 ```bash
-git clone https://github.com/SmartPotTech/SmartPot-Cache.git
-cd SmartPot-Cache
+curl -fsSL https://raw.githubusercontent.com/SmartPotTech/.github/main/docker/demo/compose.yaml | docker compose -f - up -d --wait
+```
+
+Abre http://localhost:5173 e ingresa con `demo@smartpot.app` / `SmartPot2026`. Se detiene con
+`docker compose -p smartpot-demo down` (con `-v` borra también los datos). Más detalle en la
+[demo](https://github.com/SmartPotTech/.github/tree/main/docker/demo).
+
+Solo este servicio, con la imagen publicada:
+
+```bash
+docker run -d --name smartpot-cache --read-only --tmpfs /tmp --cap-drop ALL \
+  -p 127.0.0.1:6379:6379 -e REDIS_PASSWORD=<mínimo-16-caracteres> \
+  ghcr.io/smartpottech/smartpot-cache:latest
+```
+
+### Desde el código con Docker Compose
+
+```bash
 cp .env.example .env    # define REDIS_PASSWORD
 docker compose up -d
 ```
