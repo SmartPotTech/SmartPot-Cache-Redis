@@ -5,6 +5,9 @@ LABEL org.opencontainers.image.title="SmartPot Cache" \
       org.opencontainers.image.source="https://github.com/SmartPotTech/SmartPot-Cache" \
       org.opencontainers.image.licenses="MIT"
 
+# Parches de Alpine al construir (zlib y demás) aunque la etiqueta de Redis no haya cambiado.
+RUN apk upgrade --no-cache
+
 COPY --chmod=755 entrypoint.sh /usr/local/bin/smartpot-entrypoint.sh
 
 USER 999:1000
