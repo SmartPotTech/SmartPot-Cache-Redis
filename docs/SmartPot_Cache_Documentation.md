@@ -10,7 +10,10 @@ equipo: SmartPotTech
 proyecto: smartpot.app
 -->
 
-# SmartPot-Cache
+# SmartPot-Cache-Redis (Deprecado)
+
+> [!WARNING]
+> **Componente Legado (Stack A)**: Este componente ha sido reemplazado en producción por la capa de caché canónica en Valkey 9.1 ([`SmartPot-Cache`](https://github.com/SmartPotTech/SmartPot-Cache)). Este documento describe la implementación original en Redis 8 como registro histórico.
 
 ## Ficha del documento
 

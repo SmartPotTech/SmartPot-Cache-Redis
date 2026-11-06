@@ -1,9 +1,14 @@
-# SmartPot-Cache (Redis)
+# SmartPot-Cache-Redis (Deprecated / Deprecado)
+
+> [!WARNING]
+> **Deprecated / Deprecado (Legacy Stack A)**  
+> **English:** This repository contains the legacy Stack A (v1.0) caching layer implemented using Redis 8. It has been **deprecated and superseded in production** by the canonical modern Stack B cache component: [**`SmartPot-Cache`**](https://github.com/SmartPotTech/SmartPot-Cache) (Valkey 9.1). Preserved solely for historical reference and configuration archaeology.  
+> **Español:** Este repositorio contiene la implementación legada del Stack A (v1.0) de caché basada en Redis 8. Ha sido **deprecada y sustituida en producción** por el componente de caché canónico del Stack B: [**`SmartPot-Cache`**](https://github.com/SmartPotTech/SmartPot-Cache) (Valkey 9.1). Conservada exclusivamente como referencia histórica.
 
 ## Estado del Proyecto
 
-[![Cache Image CI](https://github.com/SmartPotTech/SmartPot-Cache/actions/workflows/ci.yml/badge.svg)](https://github.com/SmartPotTech/SmartPot-Cache/actions/workflows/ci.yml)
-[![Publish Docker Images](https://github.com/SmartPotTech/SmartPot-Cache/actions/workflows/packaging.yml/badge.svg)](https://github.com/SmartPotTech/SmartPot-Cache/actions/workflows/packaging.yml)
+[![Cache Image CI](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/ci.yml/badge.svg)](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/ci.yml)
+[![Publish Docker Images](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/packaging.yml/badge.svg)](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/packaging.yml)
 
 ## Descripción
 
