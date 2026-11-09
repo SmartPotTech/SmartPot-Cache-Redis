@@ -1,33 +1,17 @@
-# SmartPot-Cache-Redis (Deprecated / Deprecado)
+# SmartPot-Cache-Redis (Legacy Stack A Reference)
 
 > [!WARNING]
-> **Deprecated / Deprecado (Legacy Stack A)**  
-> **English:** This repository contains the legacy Stack A (v1.0) caching layer implemented using Redis 8. It has been **deprecated and superseded in production** by the canonical modern Stack B cache component: [**`SmartPot-Cache`**](https://github.com/SmartPotTech/SmartPot-Cache) (Valkey 9.1). Preserved solely for historical reference and configuration archaeology.  
-> **Español:** Este repositorio contiene la implementación legada del Stack A (v1.0) de caché basada en Redis 8. Ha sido **deprecada y sustituida en producción** por el componente de caché canónico del Stack B: [**`SmartPot-Cache`**](https://github.com/SmartPotTech/SmartPot-Cache) (Valkey 9.1). Conservada exclusivamente como referencia histórica.
+> **Deprecated (Legacy Stack A Reference Implementation)**  
+> This repository contains the legacy Stack A (v1.0) caching layer implemented using Redis 8. It has been **deprecated and superseded in production** by the canonical modern Stack B cache component: [**`SmartPot-Cache`**](https://github.com/SmartPotTech/SmartPot-Cache) (Valkey 9.1.3-alpine). Preserved solely for historical reference and configuration archaeology.
 
-## Estado del Proyecto
+## Project Status
 
 [![Cache Image CI](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/ci.yml/badge.svg)](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/ci.yml)
 [![Publish Docker Images](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/packaging.yml/badge.svg)](https://github.com/SmartPotTech/SmartPot-Cache-Redis/actions/workflows/packaging.yml)
 
-## Descripción
+## Description
 
-SmartPot-Cache es el **Redis** de SmartPot. [SmartPot-API](https://github.com/SmartPotTech/SmartPot-API) lo usa para
-datos cortos y compartidos entre peticiones:
-
-| Uso                                              | Llaves                                                        | Vida                                    |
-|--------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
-| Límite de peticiones por IP                      | `smartpot:rate:*`                                             | 1 minuto                                |
-| Frecuencia mínima de telemetría por cultivo      | `smartpot:reading:*`                                          | 5 segundos                              |
-| Enfriamiento del agente y de las alertas         | `smartpot:agent:*`, `smartpot:notify:*`, `smartpot:ai-eval:*` | Minutos u horas                         |
-| Perfiles de cultivo del servicio de IA           | `smartpot:ai:crop-profiles`                                   | 1 hora                                  |
-| Resumen de lo aprendido por la IA                | `smartpot:ai:learning-status`                                 | 1 minuto                                |
-| Códigos de un solo uso para vincular Telegram    | `smartpot:channel-link:telegram:*`                            | 10 minutos (se borran al usarse)        |
-| Enlaces de un solo uso para compartir un cultivo | `smartpot:crop-share:telegram:*`                              | 10 minutos (se borran al usarse)        |
-| Clima del lugar de cada cultivo                  | `smartpot:weather:{lat}:{lon}`                                | 10 minutos (2 si el clima no respondió) |
-
-Es una caché **sin persistencia**: si se reinicia, la API reconstruye todo. Si Redis no responde, la API sigue
-funcionando con memoria local durante 30 segundos y vuelve a intentar.
+SmartPot-Cache-Redis provided in-memory caching, rate limiting, and session state storage for the legacy Stack A architecture using **Redis 8** with mandatory authentication and RDB snapshots.
 
 ## Seguridad
 
@@ -37,7 +21,7 @@ funcionando con memoria local durante 30 segundos y vuelve a intentar.
 - Corre como el usuario `999`, con sistema de archivos de solo lectura y sin capacidades de Linux.
 - En producción no publica puertos: solo la API lo alcanza por la red interna de Docker.
 
-## Estructura del Proyecto
+## Project Structure
 
 ```text
 SmartPot-Cache/
@@ -124,6 +108,6 @@ completa en una sola imagen ampliable:
 - [Linaje de los datos](https://github.com/SmartPotTech/.github/blob/main/docs/diagrams/SmartPot_Global_04_Data_Lineage.svg):
   en qué momento de cada flujo se consulta o se escribe una llave
 
-## Licencia
+## License
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
